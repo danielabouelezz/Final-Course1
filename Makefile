@@ -44,7 +44,7 @@ TARGET = final_assesment
 ifeq ($(PLATFORM),HOST)
 	CC = gcc
 	CFLAGS = $(FLAGS)
-	CPPFLAGS = -DHOST $(INCLUDES)
+	CPPFLAGS = -DHOST 
 	LDFLAGS = -Wl,-Map=$(TARGET).map
 	SIZE = size
 endif
@@ -88,19 +88,19 @@ PRES = $(SOURCES:.c=.i)
 
 # Comiling without linking using -c
 %.o : %.c
-	$(CC) -c $< $(CPPFLAGS) $(CFLAGS) -o $@
+	$(CC) -c $< $(CPPFLAGS) $(CFLAGS) $(INCLUDES) -o $@
 
 #Generating assembly file using -S
 %.asm : %.c
-	$(CC) -S $< $(CPPFLAGS) $(CFLAGS) -o $@
+	$(CC) -S $< $(CPPFLAGS) $(CFLAGS) $(INCLUDES) -o $@
 
 #Generating preprocessed file using -E
 %.i : %.c
-	$(CC) -E $< $(CPPFLAGS) -o $@
+	$(CC) -E $< $(CPPFLAGS) $(INCLUDES) -o $@
 
 #Generating dependency files using -E -M
 %.d : %.c
-	$(CC) -E -M $< $(CPPFLAGS) -o $@
+	$(CC) -E -M $< $(CPPFLAGS) $(INCLUDES) -o $@
 
 .PHONY: compile-all
 compile-all:$(OBJS)
@@ -110,7 +110,7 @@ build: $(DEPS)
 build: $(TARGET).out
 
 $(TARGET).out: $(OBJS)
-	$(CC) $(OBJS) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+	$(CC) $(OBJS) $(CPPFLAGS) $(INCLUDES) $(CFLAGS) $(LDFLAGS) -o $@
 	$(SIZE) $@
 
 .PHONY: clean

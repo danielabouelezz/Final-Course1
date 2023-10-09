@@ -19,10 +19,11 @@
  */
 
 
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "stats.h"
 #include <string.h>
+//#include <platform.h>
 /* Size of the Data Set */
 
 
@@ -117,11 +118,13 @@ void print_statistics(unsigned char arr[], int length, float *mean, float *media
 
 int print_array(unsigned char arr[], int length)
 {
+	#ifdef VERBOSE
 	printf("The array is :");
 	for (int i = 0; i<length; i++) printf(" %d,", arr[i]);
 	
 	
 	printf("\nIts length is: %d\n", length); 
+	#endif
 }
 
 

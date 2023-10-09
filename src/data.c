@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "memory.h"
-#include "platform.h"
+//#include "platform.h"
 
 uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base){
 	uint8_t digitShift = 48;

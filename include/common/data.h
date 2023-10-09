@@ -14,6 +14,9 @@
 #ifndef __DATA_H__
 #define __DATA_H__
 
+#include <stddef.h>
+#include <stdint.h>
+
 /**
  * @brief Converts an integer into an ASCII string
  *
@@ -25,7 +28,7 @@
  *
  * @return Char Length of converted data
  */
-uint8_t my_itoa(int32_t * ptr, int32_t data, uint32_t base);
+uint8_t my_itoa(int32_t data,uint8_t * ptr, uint32_t base);
 
 /**
  * @brief Converts an ASCII string to an integer

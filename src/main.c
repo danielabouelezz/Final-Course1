@@ -31,8 +31,7 @@
 int main(){
     #ifdef COURSE1
         course1();
-        return 0;  
+         
     #endif
-
-    return 0;
+    return 0; 
 }

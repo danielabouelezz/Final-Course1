@@ -19,7 +19,7 @@
 
 #include <stdint.h>
 #include "course1.h"
-#include "platform.h"
+//#include "platform.h"
 #include "memory.h"
 #include "data.h"
 #include "stats.h"

@@ -19,8 +19,12 @@
  * @date April 1 2017
  *
  */
+
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
+
+#include <stddef.h>
+#include <stdint.h>
 
 /**
  * @brief Sets a value of a data array 

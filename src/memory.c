@@ -20,6 +20,9 @@
  * @date April 1 2017
  *
  */
+#include <string.h>
+#include <stdlib.h>
+//#include <platform.h>
 #include "memory.h"
 
 /***********************************************************
@@ -53,20 +56,20 @@ uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length)
 {
   //allocated memory temp array
     uint8_t * temp  = (uint8_t *)malloc(sizeof(uint8_t ) * length);
-if(NULL == temp)
+	if(NULL == temp)
     {
-return NULL;
+	return NULL;
     }
-else
+	else
     {
-      unsigned int i;
+      size_t i;
       //copy src in temp array
-for (i=0; i<length ; i++)
+	for (i=0; i<length ; i++)
       {
         *(temp + i) = *(src + i);
       }
       //copy tmp to dest
-for (i=0 ;i<length;i++)
+	for (i=0 ;i<length;i++)
       {
         *(dst+i) = *(temp+i);
       }
@@ -79,9 +82,9 @@ return dst;
 
 uint8_t * my_memcopy (uint8_t * src, uint8_t * dst, size_t length)
 {
-unsigned int i;
+	unsigned int i;
 
-for (i=0; i<length ; i++)
+	for (i=0; i<length ; i++)
   {
     *(dst + i) = *(src + i);
   }
@@ -90,9 +93,9 @@ return dst;
 
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value)
 {
-unsigned int i;
+	unsigned int i;
 
-for (i=0 ; i<length ; i++)
+	for (i=0 ; i<length ; i++)
   {
     *(src + i) = value;
   }
@@ -102,9 +105,9 @@ return src;
 
 uint8_t * my_memzero(uint8_t * src, size_t length)
 {
-unsigned int i;
+	unsigned int i;
 
-for (i=0 ; i<length ; i++)
+	for (i=0 ; i<length ; i++)
   {
 	  *(src + i) = 0;
   }
@@ -116,11 +119,11 @@ return src;
 uint8_t * my_reverse(uint8_t * src, size_t length)
 {
 
-uint8_t vec_inv[length];
+	uint8_t vec_inv[length];
 
-int i = length-1 , j=0;
+	int i = length-1 , j=0;
 
-while(i>=0)
+	while(i>=0)
  {
 
 	vec_inv[j] = *(src + i);
@@ -128,7 +131,7 @@ while(i>=0)
  	j++;
  }
 
-for(i=0 ; i<length ; i++)
+	for(i=0 ; i<length ; i++)
 {
 	*(src + i) = vec_inv[i];
 }
@@ -139,17 +142,17 @@ return src;
 int32_t * reserve_words(size_t length)
 {
 int32_t * is_allocated = (int32_t *)malloc(sizeof(int32_t)*length);
-if (NULL == is_allocated)
+	if (NULL == is_allocated)
   {
- return NULL;
+ 	return NULL;
   }
-else
+	else
   {
-return is_allocated;
+	return is_allocated;
   }
 }
 
-void free_words(uint32_t * src)
+void free_words(int32_t * src)
 {
 return free(src);
 }
